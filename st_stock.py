@@ -26,6 +26,10 @@ per=st.sidebar.selectbox('Choose the period',
 inter=st.sidebar.selectbox('Choose the interval',
                     ('1d', '1wk','1mo'))
 
+'''
+covid_ind_1='2020-01-27'
+covid_ind_1_end='2020-05-31'
+'''
 #age = st.sidebar.slider('Choose the period', 1, 5, 3)
 
 names={"Oil":["ONGC.NS","DE"],
@@ -45,16 +49,19 @@ data_us = yf.download(tickers=selected_stock[1],
 data=pd.merge(data_ind["Close"], data_us["Close"], left_index=True, right_index=True)
 data.columns=["Inidan compnay","US compnay"]
 
-#visualization
+#visualization 
 if layout=='Seprate':
         col1, col2 = st.columns(2)
         with col1:
+                st.markdown(f"<h5 style='text-align: center;'> {selected_stock[0]} </h5>",unsafe_allow_html=True) #labelling
                 st.line_chart(data_ind.Close,width =500 ,height=250)
         with col2:
+                st.markdown(f"<h5 style='text-align: center;'>{selected_stock[1]}</h5>",unsafe_allow_html=True) #labelling
                 st.line_chart(data_us.Close,width =500 ,height=250,)
         from sklearn.preprocessing import MinMaxScaler ,StandardScaler
         mms=MinMaxScaler()
         data=pd.DataFrame(mms.fit_transform(data),columns=["Inidan compnay","US compnay"],index=data.index)
+        st.markdown(f"<h5 style='text-align: center;'>{selected_stock[0]} v/s {selected_stock[1]}</h5>",unsafe_allow_html=True) #labelling 
         st.line_chart(data,)
 
 
