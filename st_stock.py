@@ -8,8 +8,10 @@ import plotly.express as px
 
 
 #page layout
+
 st.set_page_config(layout="wide")
-st.markdown("<h1 style='text-align: center;'>Stock price</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Stock price</h1>",
+             unsafe_allow_html=True)
 
 layout=st.sidebar.selectbox('Choose the Industry',
                 ('Seprate','Comparision',"daily return"))
@@ -47,14 +49,16 @@ data.columns=["Inidan compnay","US compnay"]
 if layout=='Seprate':
         col1, col2 = st.columns(2)
         with col1:
-                st.line_chart(data_ind.Close,width =500 ,height=350)
+                st.line_chart(data_ind.Close,width =500 ,height=250)
         with col2:
-                st.line_chart(data_us.Close,width =500 ,height=350,)
-elif layout=='Comparision':
+                st.line_chart(data_us.Close,width =500 ,height=250,)
         from sklearn.preprocessing import MinMaxScaler ,StandardScaler
         mms=MinMaxScaler()
         data=pd.DataFrame(mms.fit_transform(data),columns=["Inidan compnay","US compnay"],index=data.index)
         st.line_chart(data,)
+
+
+
 elif layout=='daily return':
         data_ind['Day_Perc_Change']= data_ind['Close'].pct_change()*100
         data_us['Day_Perc_Change'] = data_us['Close'].pct_change()*100
