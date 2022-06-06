@@ -47,7 +47,7 @@ data=pd.merge(data_ind["Close"], data_us["Close"], left_index=True, right_index=
 data.columns=["Indian compnay","US compnay"]
 
 #visualization 
-if layout=='Seprate':
+if layout=='Comparision':
         col1, col2 = st.columns(2)
         with col1:
                 st.markdown(f"<h5 style='text-align: center;'> {selected_stock[0]} </h5>",unsafe_allow_html=True) #labelling
