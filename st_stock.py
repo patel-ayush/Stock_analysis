@@ -20,11 +20,11 @@ inds=st.sidebar.selectbox('Choose the Industry',
                 ('Oil', 'Agriculture', 'Tech','Banking'))
 
 per=st.sidebar.selectbox('Choose the period',
-                ('1y', '3y', '5y'))
+                ('1y', '3y'))
 
 
 inter=st.sidebar.selectbox('Choose the interval',
-                    ('1d', '1wk','1mo'))
+                    ('1d','1mo'))
 
 '''
 covid_ind_1='2020-01-27'
@@ -34,7 +34,7 @@ covid_ind_1_end='2020-05-31'
 
 names={"Oil":["ONGC.NS","DE"],
        "Agriculture":["GODREJAGRO.NS","XOM"],
-       "Tech":["TECHM.NS","IBM"],
+       "Tech":["TCS.NS","NOW"],
        "Banking":["^NSEBANK","^BKX"]}
 
 #reading the data
