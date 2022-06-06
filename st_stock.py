@@ -35,7 +35,7 @@ names={"Oil":["ONGC.NS","DE"],
        "Banking":["^NSEBANK","^BKX"]}
 
 #reading the data
-selected_stock =names[inds]
+#selected_stock =names[inds]
 data_ind = yf.download(tickers=selected_stock[0], 
                 period=per, 
                 interval=inter)
