@@ -14,10 +14,10 @@ st.markdown("<h1 style='text-align: center;'>Stock price</h1>",
              unsafe_allow_html=True)
 
 layout=st.sidebar.selectbox('Choose the Industry',
-                ('Seprate','Comparision',"daily return"))
+                ( 'Comparision',"daily return"))
 
 inds=st.sidebar.selectbox('Choose the Industry',
-                ('Oil', 'Agriculture', 'Tech','Banking'))
+                ('Oil Index','Oil Companies', 'Agriculture', 'Tech','Banking'))
 
 per=st.sidebar.selectbox('Choose the period',
                 ('1y', '3y'))
@@ -26,10 +26,7 @@ per=st.sidebar.selectbox('Choose the period',
 inter=st.sidebar.selectbox('Choose the interval',
                     ('1d','1mo'))
 
-'''
-covid_ind_1='2020-01-27'
-covid_ind_1_end='2020-05-31'
-'''
+
 #age = st.sidebar.slider('Choose the period', 1, 5, 3)
 
 names={"Oil":["ONGC.NS","DE"],
@@ -47,7 +44,7 @@ data_us = yf.download(tickers=selected_stock[1],
                 interval=inter)
 
 data=pd.merge(data_ind["Close"], data_us["Close"], left_index=True, right_index=True)
-data.columns=["Inidan compnay","US compnay"]
+data.columns=["Indian compnay","US compnay"]
 
 #visualization 
 if layout=='Seprate':
