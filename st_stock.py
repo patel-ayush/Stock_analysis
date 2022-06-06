@@ -17,7 +17,7 @@ layout=st.sidebar.selectbox('Choose the Industry',
                 ( 'Comparision',"daily return"))
 
 inds=st.sidebar.selectbox('Choose the Industry',
-                ('Oil Index','Oil Companies', 'Agriculture', 'Tech','Banking'))
+                ('Oil Companies', 'Agriculture', 'Tech','Banking'))
 
 per=st.sidebar.selectbox('Choose the period',
                 ('1y', '3y'))
@@ -29,13 +29,13 @@ inter=st.sidebar.selectbox('Choose the interval',
 
 #age = st.sidebar.slider('Choose the period', 1, 5, 3)
 
-names={"Oil":["ONGC.NS","DE"],
+names={"Oil Companies":["ONGC.NS","DE"],
        "Agriculture":["GODREJAGRO.NS","XOM"],
        "Tech":["TCS.NS","NOW"],
        "Banking":["^NSEBANK","^BKX"]}
 
 #reading the data
-#selected_stock =names[inds]
+selected_stock =names[inds]
 data_ind = yf.download(tickers=selected_stock[0], 
                 period=per, 
                 interval=inter)
